@@ -22,7 +22,7 @@ def load_csv(test_subject, trial, folder, file):
         data (pd.DataFrame): The loaded CSV file as a pandas DataFrame.
     """
 
-    file_path = os.path.abspath(f'../W02/sessions/{test_subject}/{trial}/{folder}/{file}.csv')
+    file_path = os.path.abspath(f'../W06/data/test_subjects/{test_subject}/{trial}/{folder}/{file}.csv')
     data = pd.read_csv(file_path)
     
     return data
@@ -40,7 +40,7 @@ def load_csv_0(test_subject, folder, filename):
     Returns:
         data (pd.DataFrame): The loaded CSV file as a pandas DataFrame.
     """
-    file_path = os.path.join(os.path.relpath(f'../W02/sessions/test_subject_0/gaze/' + folder), f'{filename}.csv')#f'data/test_subjects/{test_subject}/gaze/' + folder), f'{filename}.csv')
+    file_path = os.path.join(os.path.relpath(f'../W06/data/test_subjects/test_subject_0/gaze/' + folder), f'{filename}.csv')#f'data/test_subjects/{test_subject}/gaze/' + folder), f'{filename}.csv')
 
     data = pd.read_csv(file_path)
     
@@ -418,6 +418,12 @@ def visualize_pupil_centers(csv_file, pattern, x_min=250, x_max=350, y_min=185, 
     
     plt.xlim(x_min, x_max) 
     plt.ylim(y_min, y_max)  
+
+
+    # add denser grid
+    plt.xticks(range(x_min, x_max+1, 1))  # every 5 px
+    plt.yticks(range(y_min, y_max+1, 1))  # every 5 px
+    plt.grid(True, linestyle='--', alpha=0.5)  # optional: dashed light grid
 
     plt.xlabel('X Coordinate (px)')
     plt.ylabel('Y Coordinate (px)')
